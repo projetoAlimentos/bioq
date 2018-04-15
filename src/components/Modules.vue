@@ -7,6 +7,8 @@
   </div>
 </template>
 <script>
+import * as CONFIG from '../config/config'
+
 export default {
   props: ['id'],
   data () {
@@ -16,7 +18,7 @@ export default {
   },
   created () {
     console.log(this.id)
-    fetch('http://192.168.0.103:5000/api/ModuleApi/' + this.id, {
+    fetch(CONFIG.URL + '/ModuleApi/' + this.id, {
       mode: 'cors',
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -30,5 +32,7 @@ export default {
 }
 </script>
 <style scoped>
-
+a {
+  display: block;
+}
 </style>

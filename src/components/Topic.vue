@@ -9,6 +9,8 @@
   </div>
 </template>
 <script>
+import * as CONFIG from '../config/config'
+
 export default {
   props: ['id'],
   data () {
@@ -18,7 +20,7 @@ export default {
   },
   created () {
     console.log(this.id)
-    fetch('http://192.168.0.103:5000/api/TopicApi/single/' + this.id, {
+    fetch(CONFIG.URL + '/TopicApi/single/' + this.id, {
       mode: 'cors',
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -26,11 +28,16 @@ export default {
     })
       .then((response) => response.text())
       .then((data) => JSON.parse(data))
-      .then((topic) => (this.topic = topic))
+      .then((topic) => {
+        (this.topic = topic)
+        localStorage.setItem('topicId', topic.id)
+      })
       .catch(err => console.log(err))
   }
 }
 </script>
 <style scoped>
-
+a {
+  display: block;
+}
 </style>

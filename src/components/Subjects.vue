@@ -7,6 +7,8 @@
   </div>
 </template>
 <script>
+import * as CONFIG from '../config/config'
+
 export default {
   data () {
     return {
@@ -14,7 +16,7 @@ export default {
     }
   },
   created () {
-    fetch('http://192.168.0.103:5000/api/SubjectApi', {
+    fetch(CONFIG.URL + '/SubjectApi', {
       mode: 'cors',
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -30,5 +32,8 @@ export default {
 <style scoped>
   li {
     list-style-position: inside;
+  }
+  a {
+    display: block;
   }
 </style>

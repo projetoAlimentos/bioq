@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <span>bioq</span>
+      <span>{{title}}</span>
     </header>
     <main>
       <router-view></router-view>
@@ -11,14 +11,32 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      'title': 'bioq'
+    }
+  },
+  watch: {
+    '$route': function (rota) {
+      this.title = rota.name
+    }
+  }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700');
+
+* {
+  box-sizing: border-box;
+}
+
 :root{
-  --text-color: #35495E;
+  --text-color: rgba(0,0,0,.56);
   --base-font-size: 16px;
+
+  --header-color: #2e282a;
 }
 
 body {
@@ -28,7 +46,7 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', 'Nunito', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -36,29 +54,31 @@ body {
 
 main {
   text-align: center;
-  margin-top: 40px;
   width: 100%;
   max-width: 480px;
   padding: 20px;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 header {
+  display: flex;
   margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
+  height: 140px;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--header-color);
   color: #ffffff;
 }
 
 header span {
   display: block;
+  width: 100%;
+  max-width: 580px;
   position: relative;
-  font-size: 20px;
+  font-size: 2rem;
   line-height: 1;
   letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
+  font-weight: 700;
 }
 </style>

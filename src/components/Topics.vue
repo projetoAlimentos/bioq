@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h2>Tópicos</h2>
-    <div>
-      <router-link v-for="topic in topics" :key="topic.id" :to="{path: '/topico/'+topic.id}">{{topic.name}}</router-link>
+    <div class="container">
+      <router-link v-for="topic in topics" :key="topic.id" :to="{name: 'tópico', params: {id: topic.id,title: topic.name}}">
+        <i class="fa fa-file-alt"></i>
+        <span>{{topic.name}}</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -32,7 +34,47 @@ export default {
 }
 </script>
 <style scoped>
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 104%;
+  transform: translateX(-2%);
+}
+
 a {
-  display: block;
+  width: 46%;
+  height: 200px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 22px rgba(0,0,0,.16);
+
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.375rem;
+}
+
+span {
+  line-height: 120%;
+}
+
+a:nth-child(1) {
+  
+}
+
+a:not(:last-child) {
+  margin-bottom: 4%;
+}
+
+i {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
 }
 </style>

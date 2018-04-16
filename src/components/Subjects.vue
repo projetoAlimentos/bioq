@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h2>Matérias</h2>
     <div class="container">
       <img src="../assets/loading.gif" v-if="!loaded" alt="" width="65" height="65">
-      <router-link v-for="materia in materias" :key="materia.id" :to="{path: '/modulos/'+materia.id}">{{materia.name}}</router-link>
+      <router-link v-for="materia in materias" :key="materia.id" :to="{path: '/modulos/'+materia.id}">
+        <i class="fa fa-pencil-alt"></i>
+        {{materia.name}}
+      </router-link>
     </div>
   </div>
 </template>
@@ -35,10 +37,6 @@ export default {
 }
 </script>
 <style scoped>
-  h2 {
-    font-size: 2rem
-  }
-
   a {
     height: 100px;
     padding: 0 30px;
@@ -47,7 +45,7 @@ export default {
     justify-content: flex-start;
 
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 4px 22px rgba(0,0,0,.16);
 
     text-decoration: none;
@@ -57,6 +55,10 @@ export default {
   }
 
   a:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+  }
+
+  i {
+    margin-right: 20px;
   }
 </style>

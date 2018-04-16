@@ -1,10 +1,13 @@
 <template>
   <div>
-    <h2>Tópico</h2>
     <div>
+      <h2>{{title}}</h2>
       <!-- TODO: Abrir modal <router-link :to="{path: '/article/'+this.id}">Visao Geral</router-link> -->
       <br>
-      <router-link :to="{path: '/pergunta/'+this.id}">Questões</router-link>
+      <router-link :to="{path: '/pergunta/'+this.id}">
+        <i class="fa fa-list-ul"></i>
+        ver questões
+      </router-link>
     </div>
   </div>
 </template>
@@ -12,7 +15,7 @@
 import * as CONFIG from '../config/config'
 
 export default {
-  props: ['id'],
+  props: ['id', 'title'],
   data () {
     return {
       'topic': null
@@ -38,6 +41,27 @@ export default {
 </script>
 <style scoped>
 a {
-  display: block;
+  height: 100px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 22px rgba(0,0,0,.16);
+
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.375rem;
+}
+
+a:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+i {
+  margin-right: 20px;
 }
 </style>

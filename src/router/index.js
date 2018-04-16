@@ -14,35 +14,35 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
+      name: 'bioq',
       component: Hello
     },
     {
       path: '/materias',
-      name: 'Materias',
+      name: 'matérias',
       component: Subjects
     },
     {
       path: '/modulos/:id',
-      name: 'Modulos',
+      name: 'módulos',
       component: Modules,
       props: true
     },
     {
       path: '/topicos/:id',
-      name: 'Topicos',
+      name: 'tópicos',
       component: Topics,
       props: true
     },
     {
       path: '/topico/:id',
-      name: 'Topico',
+      name: 'tópico',
       component: Topic,
       props: true
     },
     {
       path: '/pergunta/:id',
-      name: 'Pergunta',
+      name: 'pergunta',
       component: Question,
       props: true
     }

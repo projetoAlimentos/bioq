@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h2>Módulos</h2>
     <div>
-      <router-link v-for="modulo in modules" :key="modulo.id" :to="{path: '/topicos/'+modulo.id}">{{modulo.name}}</router-link>
+      <router-link v-for="modulo in modules" :key="modulo.id" :to="{path: '/topicos/'+modulo.id}">
+        <i class="fa fa-book"></i>
+        {{modulo.name}}
+      </router-link>
     </div>
   </div>
 </template>
@@ -33,6 +35,27 @@ export default {
 </script>
 <style scoped>
 a {
-  display: block;
+  height: 100px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 22px rgba(0,0,0,.16);
+
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.375rem;
+}
+
+a:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+i {
+  margin-right: 20px;
 }
 </style>

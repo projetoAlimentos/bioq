@@ -16,8 +16,15 @@ export default {
 </script>
 
 <style>
+:root{
+  --text-color: #35495E;
+  --base-font-size: 16px;
+}
+
 body {
   margin: 0;
+  background-color: #f0f0f0;
+  font-size: var(--base-font-size);
 }
 
 #app {
@@ -30,6 +37,10 @@ body {
 main {
   text-align: center;
   margin-top: 40px;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 header {

@@ -23,7 +23,8 @@ export default {
     fetch(CONFIG.URL + '/ModuleApi/' + this.id, {
       mode: 'cors',
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': 'Bearer ' + localStorage.getItem('user-token')
       }
     })
       .then((response) => response.text())

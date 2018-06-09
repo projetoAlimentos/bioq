@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <h1>{{title}}</h1>
-      <a href="#" @click.prevent="logout">sair</a>
+      <a href="#" @click.prevent="logout" v-if="isAuthenticated">sair</a>
     </header>
     <main>
       <router-view></router-view>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-// import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import { AUTH_LOGOUT } from './store/actions/auth'
 
 export default {
@@ -35,9 +35,16 @@ export default {
     }
   },
   computed: {
-    isAuthenticated () {
-      return false
-    }
+    ...mapGetters(['isAuthenticated']),
+    ...mapState({
+      authLoading: state => state.auth.status === 'loading',
+      name: state => `${state.user.profile.title} ${state.user.profile.name}`
+    })
+
+    // isAuthenticated () {
+    //   return this.$store.auth.getters.isAuthenticated
+    //   // return false
+    // }
   }
 }
 </script>

@@ -2,9 +2,9 @@
   <div>
     <div v-if="questions">
       <div>
-        {{questions[index].description}} 
+        {{questions[index].description}}
         <br>
-        <answers 
+        <answers
           v-for="resposta in questions[index].answers"
           :key="resposta.id"
           :question="questions[index]"
@@ -62,7 +62,8 @@ export default {
         method: 'POST',
         body: JSON.stringify(answers),
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('user-token')
         }
       })
         .then(response => console.log(response.status))

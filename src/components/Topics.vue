@@ -23,7 +23,8 @@ export default {
     fetch(CONFIG.URL + '/TopicApi/' + this.id, {
       mode: 'cors',
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': 'Bearer ' + localStorage.getItem('user-token')
       }
     })
       .then((response) => response.text())
@@ -66,7 +67,7 @@ span {
 }
 
 a:nth-child(1) {
-  
+
 }
 
 a:not(:last-child) {

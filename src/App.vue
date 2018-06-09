@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <header>
-      <span>{{title}}</span>
+      <h1>{{title}}</h1>
+      <a href="#" @click.prevent="logout">sair</a>
     </header>
     <main>
       <router-view></router-view>
@@ -10,6 +11,9 @@
 </template>
 
 <script>
+// import { mapGetters, mapState } from 'vuex'
+import { AUTH_LOGOUT } from './store/actions/auth'
+
 export default {
   name: 'app',
   data () {
@@ -20,6 +24,19 @@ export default {
   watch: {
     '$route': function (rota) {
       this.title = rota.name
+    }
+  },
+  methods: {
+    logout: function () {
+      this.$store.dispatch(AUTH_LOGOUT)
+        .then(() => {
+          this.$router.push('/')
+        })
+    }
+  },
+  computed: {
+    isAuthenticated () {
+      return false
     }
   }
 }
@@ -71,7 +88,7 @@ header {
   color: #ffffff;
 }
 
-header span {
+header h1 {
   display: block;
   width: 100%;
   max-width: 580px;

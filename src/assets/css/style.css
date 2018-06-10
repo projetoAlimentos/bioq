@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+:root{
+  --base-font-size: 16px;
+  --text-color: rgba(0,0,0,.56);
+
+  --header-color: #2e282a;
+  --primary-color: 44, 62, 80;
+
+  --font-family: 'Avenir', 'Nunito', Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f0f0f0;
+  font-size: var(--base-font-size);
+}
+
+#app {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgb(var(--primary-color));
+}
+
+header {
+  display: flex;
+  margin: 0;
+  height: 110px;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--header-color);
+  color: #ffffff;
+}
+
+header h1 {
+  display: block;
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: .02em;
+  font-weight: 700;
+}
+
+header a {
+  color: #35495E;
+}
+
+main {
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  margin: 40px auto 0;
+  min-height: calc(100vh - 163px);
+  padding-bottom: 53px;
+}
+
+nav {
+  width: 100%;
+  height: 54px;
+  background-color: rgba(249, 249, 249, .9);
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  bottom: 0;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}

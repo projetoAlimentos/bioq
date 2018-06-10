@@ -19,7 +19,6 @@ export default {
     }
   },
   created () {
-    console.log(this.id)
     fetch(CONFIG.URL + '/ModuleApi/' + this.id, {
       mode: 'cors',
       headers: {

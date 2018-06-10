@@ -7,6 +7,7 @@ import Topics from '@/components/Topics'
 import Topic from '@/components/Topic'
 import Question from '@/components/Questions'
 import Attempt from '@/components/Attempt'
+import Profile from '@/components/Profile'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       name: 'tentativa',
       component: Attempt,
       props: true
+    },
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: Profile
     }
   ]
 })

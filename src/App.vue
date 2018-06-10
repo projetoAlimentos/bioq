@@ -105,4 +105,8 @@ header h1 {
   letter-spacing: .02em;
   font-weight: 700;
 }
+
+a {
+  color: #35495E;
+}
 </style>

@@ -41,10 +41,12 @@ export default {
   },
 
   created () {
+    console.clear()
     fetch(CONFIG.URL + '/QuestionApi/' + this.id, {
       mode: 'cors',
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': 'Bearer ' + localStorage.getItem('user-token')
       }
     })
       .then((response) => response.text())
@@ -66,30 +68,37 @@ export default {
           'Authorization': 'Bearer ' + localStorage.getItem('user-token')
         }
       })
-        .then(response => console.log(response.status))
+        .then(response => response.json())
+        .then(data => {
+          localStorage.setItem('tentativa', data.idTentativa)
+          this.$router.push('/tentativa/' + data.idTentativa)
+        })
     },
 
     'nextQuestion': function () {
-      if (this.index < (this.questions.length - 1)) {
-        let selectedAnswers = {
-          'Description': null,
-          'QuestionId': this.questions[this.index].id,
-          'Attempted': []
+      console.log(this.index)
+      let selectedAnswers = {
+        'Description': null,
+        'QuestionId': this.questions[this.index].id,
+        'Attempts': []
+      }
+      this.questions[this.index].answers.forEach(answer => {
+        if (answer.selected) {
+          selectedAnswers.Attempts.push({
+            'answerId': answer.id
+          })
         }
-        this.questions[this.index].answers.forEach(answer => {
-          console.log(answer.selected)
-          if (answer.selected) {
-            selectedAnswers.Attempted.push({
-              'answerId': answer.id
-            })
-          }
-        })
+      })
+      this.answers.AnswerAttempt.push(selectedAnswers)
 
-        this.answers.AnswerAttempt.push(selectedAnswers)
-        this.index++
-      } else {
+      if (this.index === this.questions.length - 2) {
         this.btnText = 'Enviar'
+      }
+
+      if (this.index === this.questions.length - 1) {
         this.submit(this.answers)
+      } else {
+        this.index++
       }
     }
   }

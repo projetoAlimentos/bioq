@@ -6,6 +6,7 @@ import Modules from '@/components/Modules'
 import Topics from '@/components/Topics'
 import Topic from '@/components/Topic'
 import Question from '@/components/Questions'
+import Attempt from '@/components/Attempt'
 
 Vue.use(Router)
 
@@ -44,6 +45,12 @@ export default new Router({
       path: '/pergunta/:id',
       name: 'pergunta',
       component: Question,
+      props: true
+    },
+    {
+      path: '/tentativa/:id',
+      name: 'tentativa',
+      component: Attempt,
       props: true
     }
   ]

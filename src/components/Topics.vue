@@ -66,9 +66,9 @@ span {
   line-height: 120%;
 }
 
-a:nth-child(1) {
+/* a:nth-child(1) {
 
-}
+} */
 
 a:not(:last-child) {
   margin-bottom: 4%;

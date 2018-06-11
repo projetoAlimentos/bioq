@@ -22,6 +22,8 @@ const actions = {
         url: CONFIG.URL + '/AccountApi/login', data: user, method: 'POST' })
         .then(resp => {
           const token = resp.data.accessToken
+          const idUser = resp.data.idUsuario
+          localStorage.setItem('user-id', idUser)
           localStorage.setItem('user-token', token) // store the token in localstorage
           commit(AUTH_SUCCESS, token)
           // you have your token, now log in your user :)

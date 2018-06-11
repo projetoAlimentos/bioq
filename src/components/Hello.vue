@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h2>{{ msg }}</h2>
     <form class="login" @submit.prevent="login">
       <div class="form-holder">
         <label for="user">Usuário</label>
@@ -39,7 +39,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello {
-  margin-top: -40px;
+  margin-top: -20px;
+  text-align: left;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: calc(var(--base-font-size) * 1.7);
+  margin-bottom: 20px;
 }
 
 .form-holder {
@@ -69,7 +76,7 @@ label {
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 45px white inset;
+  box-shadow: 0 0 0 45px white inset;
 }
 
 input:focus {

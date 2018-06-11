@@ -31,7 +31,7 @@ export default {
       'questions': null,
       'index': 0,
       'answers': {
-        'ApplicationUserId': null,
+        'ApplicationUserId': localStorage.getItem('user-id'),
         'TopicId': localStorage.getItem('topicId'),
         'AnswerAttempt': []
       },
@@ -120,7 +120,7 @@ export default {
 </script>
 <style scoped>
 .questions {
-  margin-top: -40px;
+  margin-top: -20px;
 }
 
 p {

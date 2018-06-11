@@ -56,9 +56,9 @@ main {
   width: 100%;
   max-width: 480px;
   padding: 20px;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   min-height: calc(100vh - 163px);
-  padding-bottom: 53px;
+  padding-bottom: 73px;
 }
 
 nav {

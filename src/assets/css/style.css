@@ -70,6 +70,14 @@ nav {
   -webkit-backdrop-filter: blur(10px);
   position: fixed;
   bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav a {
+  color: rgb(var(--primary-color))
 }
 
 h1, h2 {

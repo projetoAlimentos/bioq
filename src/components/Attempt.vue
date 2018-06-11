@@ -10,7 +10,10 @@
       <div class="result incorrect">
         {{attempt.erros}} erro(s)
       </div>
-      <span class="congratulations" v-if="(attempt.erros === 0)">Parabéns 🎉🎉🎉</span>
+      <span class="congratulations" v-if="(attempt.erros === 0)">Parabéns 🎉🎉🎉</span><br>
+      <router-link :to="{path: '/pergunta/' + this.pergunta}">
+        tentar novamente
+      </router-link>
     </div>
   </div>
 </template>
@@ -21,7 +24,8 @@ export default {
   data () {
     return {
       'loaded': false,
-      'attempt': null
+      'attempt': null,
+      'pergunta': localStorage.getItem('topicId')
     }
   },
   created () {
@@ -84,5 +88,28 @@ p {
 .result.incorrect {
   background-color: rgba(233, 69, 69, .2);
   color: rgb(233, 69, 69);
+}
+
+.congratulations {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+a {
+  display: flex;
+  width: 100%;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 22px rgba(0,0,0,.16);
+
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: var(--base-font-size);
 }
 </style>

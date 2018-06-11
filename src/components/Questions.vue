@@ -8,6 +8,7 @@
           :key="resposta.id"
           :question="questions[index]"
           :resposta="resposta"
+          :verdadeiroFalso="questions[index].verdadeiraFalsa"
           v-on:show-button="showButton">
         </answers>
         <br>
@@ -51,10 +52,9 @@ export default {
       .then((response) => response.text())
       .then((data) => JSON.parse(data))
       .then((questions) => {
-        (this.questions = questions)
-        console.log(this.questions.length)
+        this.questions = questions
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   },
 
   methods: {
@@ -108,6 +108,7 @@ export default {
     'showButton': function () {
       let button = document.querySelector('button')
       let selecionados = this.questions[this.index].answers.filter(answer => answer.selected)
+      console.log(selecionados)
 
       if (selecionados.length > 0) {
         button.classList.add('active')

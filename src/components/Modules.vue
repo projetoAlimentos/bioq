@@ -28,7 +28,9 @@ export default {
     })
       .then((response) => response.text())
       .then((data) => JSON.parse(data))
-      .then((modules) => (this.modules = modules))
+      .then((modules) => {
+        this.modules = modules
+      })
       .catch(err => console.log(err))
   }
 }

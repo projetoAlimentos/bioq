@@ -1,6 +1,13 @@
 <template>
   <div class="answer">
-    <input type="checkbox" v-model="resposta.selected" :id="resposta.id" @change="showButton">
+    <input
+      v-model="resposta.selected"
+      :type="verdadeiroFalso ? 'radio' : 'checkbox'"
+      :name="verdadeiroFalso ? 'radio' : ''"
+      :value="resposta.id"
+      :id="resposta.id"
+      @change="showButton">
+
     <label :for="resposta.id">
       {{resposta.description}}
     </label>
@@ -8,7 +15,7 @@
 </template>
 <script>
 export default {
-  props: ['resposta'],
+  props: ['resposta', 'verdadeiroFalso'],
   created () {
     this.resposta.selected = false
   },

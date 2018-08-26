@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="container">
-      <router-link v-for="topic in topics" :key="topic.id" :to="{name: 'tópico', params: {id: topic.id,title: topic.name}}">
+      <router-link
+        v-for="topic in topics"
+        :key="topic.id"
+        :to="{name: 'tópico', params: {id: topic.id,title: topic.name}}"
+        :event="disabled ? '' : 'click' "
+        :class="disabled ? 'disabled' : '' ">
         <i class="fa fa-file-alt"></i>
         <span>{{topic.name}}</span>
       </router-link>
@@ -15,11 +20,17 @@ export default {
   props: ['id'],
   data () {
     return {
-      'topics': null
+      'topics': null,
+      'disabled': true
+    }
+  },
+  methods: {
+    handleClick: function (e) {
     }
   },
   created () {
     console.log(this.id)
+    localStorage.setItem('module', this.id)
     fetch(CONFIG.URL + '/TopicApi/' + this.id, {
       mode: 'cors',
       headers: {
@@ -60,6 +71,10 @@ a {
   color: var(--text-color);
   font-weight: 700;
   font-size: 1.375rem;
+}
+
+a.disabled {
+  opacity: .35;
 }
 
 span {

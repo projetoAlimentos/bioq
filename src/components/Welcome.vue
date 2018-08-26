@@ -1,37 +1,23 @@
 <template>
-  <div class="hello">
-    <h2>{{ msg }}</h2>
-    <form class="login" @submit.prevent="login">
-      <div class="form-holder">
-        <label for="user">Usuário</label>
-        <input class="input" id="user" type="email" required v-model="email" placeholder="voce@email.com">
-      </div>
-      <div class="form-holder">
-        <label for="pass">Senha</label>
-        <input class="input" id="pass" type="password" required v-model="password" placeholder="Senha">
-      </div>
-      <button type="submit">Entrar</button>
-    </form>
-    <router-link to="/cadastro" class="form-link">Cadastre-se</router-link>
+  <div>
+    <h2>Bem-vindx</h2>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt consequatur, labore tempore doloremque eius neque. Ex alias quod est tempore corrupti molestias possimus odio, rerum mollitia qui quibusdam dolorum reiciendis!</p>
+    <router-link :to="{path: '/modulos/3'}">
+      asdds
+    </router-link>
   </div>
 </template>
 
 <script>
-import { AUTH_REQUEST } from '../store/actions/auth'
 export default {
-  name: 'hello',
+  name: 'welcome',
   data () {
     return {
-      msg: 'Login'
+      msg: 'início'
     }
   },
   methods: {
-    login: function () {
-      const { email, password } = this
-      this.$store.dispatch(AUTH_REQUEST, { email, password }).then(() => {
-        this.$router.push('/inicio')
-      })
-    }
+
   }
 }
 </script>

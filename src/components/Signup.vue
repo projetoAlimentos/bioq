@@ -3,33 +3,41 @@
     <h2>{{ msg }}</h2>
     <form class="login" @submit.prevent="login">
       <div class="form-holder">
-        <label for="user">Usuário</label>
+        <label for="name">Nome</label>
+        <input class="input" id="name" type="text" required v-model="name" placeholder="Seu nome">
+      </div>
+      <div class="form-holder">
+        <label for="user">E-mail</label>
         <input class="input" id="user" type="email" required v-model="email" placeholder="voce@email.com">
       </div>
       <div class="form-holder">
         <label for="pass">Senha</label>
         <input class="input" id="pass" type="password" required v-model="password" placeholder="Senha">
       </div>
-      <button type="submit">Entrar</button>
+      <div class="form-holder">
+        <label for="passconfirm">Confirmar senha</label>
+        <input class="input" id="passconfirm" type="password" required v-model="confirmPassword" placeholder="Confirmar senha">
+      </div>
+      <button type="submit">Cadastrar</button>
     </form>
-    <router-link to="/cadastro" class="form-link">Cadastre-se</router-link>
+    <router-link to="/" class="form-link">já tem cadastro? faça login</router-link>
   </div>
 </template>
 
 <script>
-import { AUTH_REQUEST } from '../store/actions/auth'
+import { SIGN_REQUEST } from '../store/actions/auth'
 export default {
-  name: 'hello',
+  name: 'signup',
   data () {
     return {
-      msg: 'Login'
+      msg: 'Cadastre-se'
     }
   },
   methods: {
     login: function () {
-      const { email, password } = this
-      this.$store.dispatch(AUTH_REQUEST, { email, password }).then(() => {
-        this.$router.push('/inicio')
+      const { name, email, password, confirmPassword } = this
+      this.$store.dispatch(SIGN_REQUEST, { name, email, password, confirmPassword }).then(() => {
+        this.$router.push('/materias')
       })
     }
   }

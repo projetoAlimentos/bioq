@@ -14,6 +14,9 @@
       <router-link :to="{path: '/pergunta/' + this.pergunta}">
         tentar novamente
       </router-link>
+      <router-link :to="{path: '/topicos/' + this.modulo}">
+        voltar aos tópicos
+      </router-link>
     </div>
   </div>
 </template>
@@ -25,7 +28,8 @@ export default {
     return {
       'loaded': false,
       'attempt': null,
-      'pergunta': localStorage.getItem('topicId')
+      'pergunta': localStorage.getItem('topicId'),
+      'modulo': localStorage.getItem('module')
     }
   },
   created () {
@@ -111,5 +115,9 @@ a {
   color: var(--text-color);
   font-weight: 700;
   font-size: var(--base-font-size);
+}
+
+a:not(:last-child) {
+  margin-bottom: 10px;
 }
 </style>

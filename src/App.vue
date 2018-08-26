@@ -7,7 +7,8 @@
       <router-view></router-view>
     </main>
     <nav v-if="isAuthenticated">
-      <router-link :to="{path: '/materias'}">Início</router-link>
+      <!-- <router-link :to="{path: '/materias'}">Início</router-link> -->
+      <router-link :to="{path: '/inicio'}">Início</router-link>
       <router-link :to="{path: '/perfil'}">Perfil</router-link>
     </nav>
   </div>

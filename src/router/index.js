@@ -8,6 +8,8 @@ import Topic from '@/components/Topic'
 import Question from '@/components/Questions'
 import Attempt from '@/components/Attempt'
 import Profile from '@/components/Profile'
+import Signup from '@/components/Signup'
+import Welcome from '@/components/Welcome'
 
 Vue.use(Router)
 
@@ -18,6 +20,11 @@ export default new Router({
       path: '/',
       name: 'bioq',
       component: Hello
+    },
+    {
+      path: '/cadastro',
+      name: 'cadastro',
+      component: Signup
     },
     {
       path: '/materias',
@@ -58,6 +65,11 @@ export default new Router({
       path: '/perfil',
       name: 'perfil',
       component: Profile
+    },
+    {
+      path: '/inicio',
+      name: 'inicio',
+      component: Welcome
     }
   ]
 })

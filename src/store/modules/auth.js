@@ -1,4 +1,4 @@
-import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from '../actions/auth'
+import { AUTH_REQUEST, SIGN_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from '../actions/auth'
 import { USER_REQUEST } from '../actions/user'
 import * as CONFIG from '../../config/config'
 import axios from 'axios'
@@ -37,31 +37,31 @@ const actions = {
         })
     })
   },
-  // [SIGN_REQUEST]: ({commit, dispatch}, user) => {
-  //   return new Promise((resolve, reject) => { // The Promise used for router redirect in login
-  //     commit(SIGN_REQUEST)
+  [SIGN_REQUEST]: ({commit, dispatch}, user) => {
+    return new Promise((resolve, reject) => { // The Promise used for router redirect in login
+      commit(SIGN_REQUEST)
 
-  //     console.log(user)
-  //     axios({
-  //       url: CONFIG.URL + '/AccountApi/register', data: user, method: 'POST' })
-  //       .then(resp => {
-  //         console.log(resp.data)
-  //         const token = resp.data.accessToken
-  //         const idUser = resp.data.idUsuario
-  //         localStorage.setItem('user-id', idUser)
-  //         localStorage.setItem('user-token', token) // store the token in localstorage
-  //         commit(AUTH_SUCCESS, token)
-  //         // you have your token, now log in your user :)
-  //         dispatch(USER_REQUEST)
-  //         resolve(resp)
-  //       })
-  //       .catch(err => {
-  //         commit(AUTH_ERROR, err)
-  //         localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
-  //         reject(err)
-  //       })
-  //   })
-  // },
+      console.log(user)
+      axios({
+        url: CONFIG.URL + '/AccountApi/register', data: user, method: 'POST' })
+        .then(resp => {
+          console.log(resp.data)
+          const token = resp.data.accessToken
+          const idUser = resp.data.idUsuario
+          localStorage.setItem('user-id', idUser)
+          localStorage.setItem('user-token', token) // store the token in localstorage
+          commit(AUTH_SUCCESS, token)
+          // you have your token, now log in your user :)
+          dispatch(USER_REQUEST)
+          resolve(resp)
+        })
+        .catch(err => {
+          commit(AUTH_ERROR, err)
+          localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
+          reject(err)
+        })
+    })
+  },
   [AUTH_LOGOUT]: ({commit, dispatch}) => {
     return new Promise((resolve, reject) => {
       commit(AUTH_LOGOUT)
@@ -76,9 +76,9 @@ const mutations = {
   [AUTH_REQUEST]: (state) => {
     state.status = 'loading'
   },
-  // [SIGN_REQUEST]: (state) => {
-  //   state.status = 'loading'
-  // },
+  [SIGN_REQUEST]: (state) => {
+    state.status = 'loading'
+  },
   [AUTH_SUCCESS]: (state, token) => {
     state.status = 'success'
     state.token = token

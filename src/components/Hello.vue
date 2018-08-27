@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <notification v-if="aparecerErro" :codigo="codigoErro" :mensagem="mensagemErro" />
     <h2>{{ msg }}</h2>
     <form class="login" @submit.prevent="login">
       <div class="form-holder">
@@ -18,11 +19,20 @@
 
 <script>
 import { AUTH_REQUEST } from '../store/actions/auth'
+import Notification from './Notification'
 export default {
   name: 'hello',
+  components: {
+    'notification': Notification
+  },
   data () {
     return {
-      msg: 'Login'
+      msg: 'Login',
+      email: null,
+      password: null,
+      codigoErro: null,
+      mensagemErro: null,
+      aparecerErro: false
     }
   },
   methods: {
@@ -31,6 +41,16 @@ export default {
       this.$store.dispatch(AUTH_REQUEST, { email, password }).then(() => {
         this.$router.push('/inicio')
       })
+        .catch(err => {
+          this.codigoErro = err.response.status
+          this.mensagemErro = err.response.statusText
+          this.aparecerErro = true
+        })
+    }
+  },
+  created () {
+    if (localStorage.getItem('user-token') !== 'undefined' && localStorage.getItem('user-token')) {
+      this.$router.push('/inicio')
     }
   }
 }

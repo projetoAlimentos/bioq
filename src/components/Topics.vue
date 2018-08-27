@@ -2,13 +2,13 @@
   <div>
     <div class="container">
       <router-link
-        v-for="topic in topics"
-        :key="topic.id"
-        :to="{name: 'tópico', params: {id: topic.id,title: topic.name}}"
-        :event="disabled ? '' : 'click' "
-        :class="disabled ? 'disabled' : '' ">
+        v-for="item in topics"
+        :key="item.topic.id"
+        :to="{name: 'tópico', params: {id: item.topic.id,title: item.topic.name}}"
+        :event="item.liberado ? 'click' : '' "
+        :class="item.liberado ? '' : 'disabled' ">
         <i class="fa fa-file-alt"></i>
-        <span>{{topic.name}}</span>
+        <span>{{item.topic.name}}</span>
       </router-link>
     </div>
   </div>
@@ -20,8 +20,7 @@ export default {
   props: ['id'],
   data () {
     return {
-      'topics': null,
-      'disabled': true
+      'topics': null
     }
   },
   methods: {
@@ -29,7 +28,7 @@ export default {
     }
   },
   created () {
-    console.log(this.id)
+    // console.log(this.id)
     localStorage.setItem('module', this.id)
     fetch(CONFIG.URL + '/TopicApi/' + this.id, {
       mode: 'cors',
@@ -40,7 +39,21 @@ export default {
     })
       .then((response) => response.text())
       .then((data) => JSON.parse(data))
-      .then((topics) => (this.topics = topics))
+      .then((topics) => {
+        this.topics = topics
+        let liberaPrimeiro = false
+        this.topics.forEach(item => {
+          if (item.acertosMax / (item.acertosMax + item.errosMax) > 0.7) {
+            item.liberado = true
+          } else if (liberaPrimeiro === false) {
+            item.liberado = true
+            liberaPrimeiro = true
+          } else {
+            item.liberado = false
+          }
+        })
+        console.log(this.topics)
+      })
       .catch(err => console.log(err))
   }
 }
@@ -56,8 +69,8 @@ export default {
 
 a {
   width: 46%;
-  height: 200px;
-  padding: 0 30px;
+  height: 170px;
+  padding: 0 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +83,7 @@ a {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 700;
-  font-size: 1.375rem;
+  font-size: 1.215rem;
 }
 
 a.disabled {

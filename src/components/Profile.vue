@@ -12,7 +12,9 @@ export default {
   data () {
     return {
       'loaded': false,
-      'user': null
+      'user': {
+        name: null
+      }
     }
   },
   created () {

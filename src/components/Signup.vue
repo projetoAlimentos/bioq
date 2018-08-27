@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <notification v-if="aparecerErro" :codigo="codigoErro" :mensagem="mensagemErro" />
     <h2>{{ msg }}</h2>
     <form class="login" @submit.prevent="login">
       <div class="form-holder">
@@ -12,13 +13,15 @@
       </div>
       <div class="form-holder">
         <label for="pass">Senha</label>
-        <input class="input" id="pass" type="password" required v-model="password" placeholder="Senha">
+        <input class="input" id="pass" type="password" required v-model="password" placeholder="Senha" minlength="8">
       </div>
       <div class="form-holder">
         <label for="passconfirm">Confirmar senha</label>
-        <input class="input" id="passconfirm" type="password" required v-model="confirmPassword" placeholder="Confirmar senha">
+        <input class="input" id="passconfirm" type="password" required v-model="confirmPassword" placeholder="Confirmar senha" minlength="8" v-on:keyup="handleKeyUp">
       </div>
-      <button type="submit">Cadastrar</button>
+      <div v-if="allowSignup">
+        <button type="submit">Cadastrar</button>
+      </div>
     </form>
     <router-link to="/" class="form-link">já tem cadastro? faça login</router-link>
   </div>
@@ -26,19 +29,43 @@
 
 <script>
 import { SIGN_REQUEST } from '../store/actions/auth'
+import Notification from './Notification'
 export default {
   name: 'signup',
+  components: {
+    'notification': Notification
+  },
   data () {
     return {
-      msg: 'Cadastre-se'
+      msg: 'Cadastre-se',
+      name: null,
+      email: null,
+      password: null,
+      confirmPassword: null,
+      allowSignup: false,
+
+      codigoErro: null,
+      mensagemErro: null,
+      aparecerErro: false
     }
   },
   methods: {
+    handleKeyUp: function (e) {
+      let pass = document.getElementById('pass')
+      if (e.target.value === pass.value) {
+        this.allowSignup = true
+      }
+    },
     login: function () {
       const { name, email, password, confirmPassword } = this
       this.$store.dispatch(SIGN_REQUEST, { name, email, password, confirmPassword }).then(() => {
         this.$router.push('/materias')
       })
+        .catch(err => {
+          this.codigoErro = err.response.status
+          this.mensagemErro = err.response.statusText
+          this.aparecerErro = true
+        })
     }
   }
 }

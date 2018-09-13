@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h2>Bem-vindx</h2>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt consequatur, labore tempore doloremque eius neque. Ex alias quod est tempore corrupti molestias possimus odio, rerum mollitia qui quibusdam dolorum reiciendis!</p>
-    <router-link :to="{path: '/modulos/3'}">
-      asdds
+    <h2>Olá,</h2>
+    <p>
+      Este é o Bioq! Aqui você pode explorar os tópicos vistos em sala, fazer revisões e responder questionários que irão te ajudar a fixar os conteúdos aprendidos em Bioquímica!
+    </p>
+    <router-link :to="{path: '/modulos/1'}">
+      vamos começar
     </router-link>
   </div>
 </template>
@@ -32,6 +34,14 @@ export default {
 h2 {
   font-weight: 600;
   font-size: calc(var(--base-font-size) * 1.7);
+  margin-bottom: 20px;
+}
+
+p {
+  font-weight: 600;
+  text-align: left;
+  font-size: calc(var(--base-font-size) * 1.1);
+  line-height: 1.7;
   margin-bottom: 20px;
 }
 
@@ -70,7 +80,7 @@ input:focus {
   border-color: rgba(var(--primary-color), .4);
 }
 
-button {
+a {
   color: #fff;
   font: normal 17px var(--font-family);
   background-color: rgb(var(--primary-color));

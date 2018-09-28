@@ -68,7 +68,7 @@ export default new Router({
     },
     {
       path: '/inicio',
-      name: 'inicio',
+      name: 'início',
       component: Welcome
     }
   ]

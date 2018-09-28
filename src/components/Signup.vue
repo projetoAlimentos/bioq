@@ -4,23 +4,23 @@
     <h2>{{ msg }}</h2>
     <form class="login" @submit.prevent="login">
       <div class="form-holder">
-        <label for="name">Nome</label>
-        <input class="input" id="name" type="text" required v-model="name" placeholder="Seu nome">
+        <label for="name">nome</label>
+        <input class="input" id="name" type="text" required v-model="name" placeholder="seu nome">
       </div>
       <div class="form-holder">
-        <label for="user">E-mail</label>
+        <label for="user">e-mail</label>
         <input class="input" id="user" type="email" required v-model="email" placeholder="voce@email.com">
       </div>
       <div class="form-holder">
-        <label for="pass">Senha</label>
-        <input class="input" id="pass" type="password" required v-model="password" placeholder="Senha" minlength="8">
+        <label for="pass">senha</label>
+        <input class="input" id="pass" type="password" required v-model="password" placeholder="senha" minlength="8">
       </div>
       <div class="form-holder">
-        <label for="passconfirm">Confirmar senha</label>
-        <input class="input" id="passconfirm" type="password" required v-model="confirmPassword" placeholder="Confirmar senha" minlength="8" v-on:keyup="handleKeyUp">
+        <label for="passconfirm">confirmar senha</label>
+        <input class="input" id="passconfirm" type="password" required v-model="confirmPassword" placeholder="confirmar senha" minlength="8" v-on:keyup="handleKeyUp">
       </div>
       <div v-if="allowSignup">
-        <button type="submit">Cadastrar</button>
+        <button type="submit">cadastrar</button>
       </div>
     </form>
     <router-link to="/" class="form-link">já tem cadastro? faça login</router-link>
@@ -37,7 +37,7 @@ export default {
   },
   data () {
     return {
-      msg: 'Cadastre-se',
+      msg: 'cadastre-se',
       name: null,
       email: null,
       password: null,

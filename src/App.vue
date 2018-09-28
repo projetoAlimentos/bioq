@@ -8,8 +8,8 @@
     </main>
     <nav v-if="isAuthenticated">
       <!-- <router-link :to="{path: '/materias'}">Início</router-link> -->
-      <router-link :to="{path: '/inicio'}">Início</router-link>
-      <router-link :to="{path: '/perfil'}">Perfil</router-link>
+      <router-link :to="{path: '/inicio'}"><i class="fa fa-home"></i> início</router-link>
+      <router-link :to="{path: '/perfil'}"><i class="fa fa-user"></i> perfil</router-link>
     </nav>
   </div>
 </template>

@@ -4,16 +4,16 @@
     <h2>{{ msg }}</h2>
     <form class="login" @submit.prevent="login">
       <div class="form-holder">
-        <label for="user">Usuário</label>
+        <label for="user">usuário</label>
         <input class="input" id="user" type="email" required v-model="email" placeholder="voce@email.com">
       </div>
       <div class="form-holder">
-        <label for="pass">Senha</label>
+        <label for="pass">senha</label>
         <input class="input" id="pass" type="password" required v-model="password" placeholder="Senha">
       </div>
-      <button type="submit">Entrar</button>
+      <button type="submit">entrar</button>
     </form>
-    <router-link to="/cadastro" class="form-link">Cadastre-se</router-link>
+    <router-link to="/cadastro" class="form-link">cadastre-se</router-link>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-      msg: 'Login',
+      msg: 'entrar',
       email: null,
       password: null,
       codigoErro: null,

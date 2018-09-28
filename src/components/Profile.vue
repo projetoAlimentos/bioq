@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="profile">
     <img src="../assets/loading.gif" v-if="!loaded" alt="" width="65" height="65">
-    <h1>{{user.name}}</h1>
+    <h2>{{user.name}}</h2>
     <a href="#" @click.prevent="logout">sair</a>
   </div>
 </template>
@@ -42,6 +42,28 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
+.profile {
+  text-align: left;
+}
 
+h2 {
+  font-weight: 600;
+  font-size: calc(var(--base-font-size) * 1.7);
+  margin-bottom: 20px;
+}
+
+a {
+  color: #fff;
+  font: normal 17px var(--font-family);
+  background-color: rgb(var(--danger-color));
+  display: inline-flex;
+  align-items: center;
+  height: 45px;
+  padding: 0 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
 </style>

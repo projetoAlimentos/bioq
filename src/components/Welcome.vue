@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>Olá,</h2>
+    <h2>olá,</h2>
     <p>
-      Este é o Bioq! Aqui você pode explorar os tópicos vistos em sala, fazer revisões e responder questionários que irão te ajudar a fixar os conteúdos aprendidos em Bioquímica!
+      este é o Bioq! Aqui você pode explorar os tópicos vistos em sala, fazer revisões e responder questionários que irão te ajudar a fixar os conteúdos aprendidos em Bioquímica!
     </p>
     <router-link :to="{path: '/modulos/1'}">
       vamos começar
@@ -38,7 +38,7 @@ h2 {
 }
 
 p {
-  font-weight: 600;
+  font-weight: 500;
   text-align: left;
   font-size: calc(var(--base-font-size) * 1.1);
   line-height: 1.7;
@@ -84,10 +84,13 @@ a {
   color: #fff;
   font: normal 17px var(--font-family);
   background-color: rgb(var(--primary-color));
+  display: inline-flex;
+  align-items: center;
   height: 45px;
   padding: 0 22px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 </style>

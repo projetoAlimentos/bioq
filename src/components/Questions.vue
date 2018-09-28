@@ -28,7 +28,7 @@ export default {
   },
   data () {
     return {
-      'btnText': 'Próxima pergunta',
+      'btnText': 'próxima pergunta',
       'questions': null,
       'index': 0,
       'answers': {
@@ -91,7 +91,7 @@ export default {
       this.answers.AnswerAttempt.push(selectedAnswers)
 
       if (this.index === this.questions.length - 2) {
-        this.btnText = 'Concluir'
+        this.btnText = 'concluir'
         setTimeout(function () {
           button.classList.add('send')
         }, 600)
